@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Selection</title>
+<link rel="stylesheet" href="style.css">
+<style>
+    body {
+        margin: 0;
+        background: #f6ecdd;
+        font-family: Poppins, sans-serif;
+    }
+
+    /* Title Bar */
+    .title-bar {
+        background: #b4985f;
+        padding: 16px;
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    /* Main Layout */
+    .container {
+        display: flex;
+        gap: 20px;
+        width: 95%;
+        max-width: 1100px;
+        margin: 30px auto;
+    }
+
+    /* Left Image */
+    .payment-img {
+        width: 50%;
+        height: 420px;
+        border-radius: 8px;
+        object-fit: cover;
+        box-shadow: 0 4px 10px #00000025;
+    }
+
+    /* Payment Box */
+    .payment-box {
+        width: 50%;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px #00000020;
+    }
+
+    /* Dropdown header */
+    .dropdown-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px;
+        background: #f2eadc;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        border: 1px solid #d6c8aa;
+    }
+
+    .arrow { transition: 0.3s; }
+
+    /* Options */
+    .dropdown-content {
+        display: none;
+        padding: 12px;
+        margin-top: 10px;
+        background: #fff;
+        border: 1px solid #d6c8aa;
+        border-radius: 8px;
+    }
+
+    .pay-option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        cursor: pointer;
+        border-bottom: 1px solid #eee;
+    }
+
+    .pay-option:last-child {
+        border-bottom: none;
+    }
+
+    .pay-option:hover {
+        background: #f8f3e8;
+        border-radius: 6px;
+    }
+
+    .pay-icon { width: 20px; }
+
+    /* Credit Card Form Box */
+    .card-form {
+        display: none;
+        margin-top: 20px;
+        padding: 20px;
+        border: 1px solid #b4985f;
+        border-radius: 10px;
+        background: #fff;
+    }
+
+    .form-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 18px;
+    }
+
+    .form-input {
+        width: 48%;
+    }
+
+    label {
+        font-size: 14px;
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .proceed-btn {
+        background: #b4985f;
+        float: right;
+        border: none;
+        padding: 10px 25px;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    @media(max-width: 850px) {
+        .container { flex-direction: column; }
+        .payment-img, .payment-box { width: 100%; }
+        .form-row { flex-direction: column; }
+        .form-input { width: 100%; margin-bottom: 12px; }
+    }
+</style>
+</head>
+<body>
+<!-- Top Navigation -->
+<div class="top-nav">
+    <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="reservation.html">Reservation</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="help.html">Help</a></li>
+</ul>
+
+</div>
+
+<!-- Bottom Section -->
+<div class="search-section">
+    
+    <div class="logo-box">
+        <div class="logo"><span>Book</span>mytable</div>
+        <div class="tag">Never wait for your meal</div>
+    </div>
+
+    <div class="search-box">
+        <input type="text" placeholder="Search">
+        <img src="https://cdn-icons-png.flaticon.com/512/954/954591.png" alt="search">
+    </div>
+
+    <!-- Register Button -->
+    <button class="btn" onclick="showProfile()">Register</button>
+
+    <!-- Icons + Profile (Hidden by default) -->
+    <div class="icons-box" id="iconsBox" style="display:none;">
+
+        <!-- Notification -->
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1827/1827370.png">
+
+        <!-- Contact / Message -->
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/542/542689.png" onclick="window.location.href='contact.html'">
+
+        <!-- Heart -->
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/833/833472.png" onclick="window.location.href='whitelist.html'">
+
+        <!-- Profile -->
+        <img src="images/Photo by H Liu.png" class="profile-img">
+
+    </div>
+
+</div>
+
+<div class="title-bar">Payment Selection</div>
+
+<div class="container">
+
+    <img src="images/unsplash_yTUYqXfIL80.png" class="payment-img">
+
+    <div class="payment-box">
+
+        <!-- Dropdown -->
+        <div class="dropdown-header" onclick="toggleDropdown()">
+            Select Payment Method
+            <span id="arrow">⌄</span>
+        </div>
+
+        <div id="dropdownBox" class="dropdown-content">
+
+            <div class="pay-option" onclick="showCardForm()">
+                <img src="https://cdn-icons-png.flaticon.com/512/633/633611.png" class="pay-icon">
+                Credit Card
+            </div>
+
+            <div class="pay-option">
+                <img src="https://cdn-icons-png.flaticon.com/512/217/217425.png" class="pay-icon">
+                Debit Card
+            </div>
+
+            <div class="pay-option">
+                <img src="https://cdn-icons-png.flaticon.com/512/300/300218.png" class="pay-icon">
+                Google Pay
+            </div>
+
+            <div class="pay-option">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968776.png" class="pay-icon">
+                UPI
+            </div>
+
+        </div>
+
+        <!-- CREDIT CARD FORM -->
+        <div id="cardForm" class="card-form">
+
+            <div class="form-row">
+                <div class="form-input">
+                    <label>Card Holder Name</label>
+                    <input type="text">
+                </div>
+
+                <div class="form-input">
+                    <label>Card Number</label>
+                    <input type="text" maxlength="16">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-input">
+                    <label>Expiry Date</label>
+                    <input type="month">
+                </div>
+
+                <div class="form-input">
+                    <label>CVV</label>
+                    <input type="password" maxlength="3">
+                </div>
+            </div>
+
+            <button class="proceed-btn"  onclick="window.location.href='confirm.html'">Proceed</button>
+
+        </div>
+
+    </div>
+
+</div>
+<!--Footer-->
+<footer class="footer">
+
+    <div class="footer-top">
+
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Customer Reviews</a>
+            <a href="#">Add Your Restaurant</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Policy Info</h4>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Cookies Policy</a>
+            <a href="#">Cancellation Policy</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Cities</h4>
+            <a href="#">Chennai</a>
+            <a href="#">Banglore</a>
+            <a href="#">Hyderabad</a>
+            <a href="#">Mumbai</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Help</h4>
+            <a href="#">Booking Status</a>
+            <a href="#">Add Restaurant</a>
+        </div>
+
+    </div>
+
+    <hr class="footer-line">
+
+    <div class="footer-bottom">
+        <p>Restaurant in Chennai</p>
+        <p>Restaurant in Pune</p>
+
+        <p>Restaurant in Bangalore</p>
+        <p>Restaurant in Kolkata</p>
+
+        <p>Restaurant in Hyderabad</p>
+        <p>Restaurant in Mumbai</p>
+    </div>
+
+</footer>
+<div class="footer-bottom-bar">
+
+    <div class="footer-left">
+        <p>© 2025 Book My Table.Co.in. All rights reserved.</p>
+
+        <div class="social-icons">
+            <a href="#"><img src="images/facebook.png"></a>
+            <a href="#"><img src="images/twitter.png"></a>
+            <a href="#"><img src="images/instagram.png"></a>
+        </div>
+    </div>
+
+    <div class="footer-right">
+
+        <p>
+            <!-- Phone SVG -->
+            <svg class="ico" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.9 
+                19.9 0 0 1-8.63-3.07 19.6 19.6 0 0 
+                1-6-6A19.9 19.9 0 0 1 2.09 4.18 
+                2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 
+                1.72c.12.9.31 1.78.57 2.63a2 2 
+                0 0 1-.45 2.11L8.09 9.91a16 16 
+                0 0 0 6 6l1.45-1.13a2 2 0 0 
+                1 2.11-.45c.85.26 1.73.45 
+                2.63.57A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            (123) 8940–985498
+        </p>
+
+        <p>
+            <!-- Mail SVG -->
+            <svg class="ico" viewBox="0 0 24 24">
+                <rect x="3" y="5" width="18" height="14" rx="2"/>
+                <polyline points="3 5 12 13 21 5"/>
+            </svg>
+            Info@Bookmytable.com
+        </p>
+
+        <p>
+            <!-- Location SVG -->
+            <svg class="ico" viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13S3 
+                17 3 10a9 9 0 1 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Chennai 54375387
+        </p>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+<script>
+function toggleDropdown() {
+    let box = document.getElementById("dropdownBox");
+    let arrow = document.getElementById("arrow");
+
+    if (box.style.display === "block") {
+        box.style.display = "none";
+        arrow.style.transform = "rotate(0deg)";
+    } else {
+        box.style.display = "block";
+        arrow.style.transform = "rotate(180deg)";
+    }
+}
+
+function showCardForm() {
+    document.getElementById("cardForm").style.display = "block";
+}
+</script>
+
+</body>
+</html>

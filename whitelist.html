@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whitelist Page</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+    font-family: Poppins, sans-serif;
+    margin: 0;
+    background: #f6ecdd;
+}
+
+/* -------- Title -------- */
+.page-title {
+    text-align: center;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* -------- Restaurant Whitelist -------- */
+.rest-box {
+    display: flex;
+    background: white;
+    margin: auto;
+    width: 92%;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px #00000022;
+}
+
+.rest-box img {
+    width: 50%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.rest-details {
+    padding: 20px;
+    width: 50%;
+    position: relative;
+}
+
+/* FIXED HEART SIZE */
+.heart {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+}
+
+/* Text */
+.rest-details h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.rest-details p {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #444;
+}
+
+.star-rating {
+    color: #f7d93b;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+/* Add more small button */
+.add-small {
+    font-size: 14px;
+    float: right;
+    color: #444;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* --------- Show More Button --------- */
+.show-more-btn {
+    background: #b4985f;
+    color: white;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 6px;
+    display: block;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+/* -------- Menu Whitelist Title -------- */
+.menu-title {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+/* -------- Menu Whitelist Section -------- */
+.menu-area {
+    display: flex;
+    justify-content: space-between;
+    width: 92%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+/* Left card */
+.menu-card {
+    background: white;
+    width: 60%;
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 5px #00000022;
+}
+
+.menu-card img {
+    width: 45%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.menu-content {
+    padding: 15px;
+    width: 55%;
+    position: relative;
+}
+
+.menu-heart {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.menu-content h3 {
+    margin: 0;
+    font-size: 17px;
+}
+
+.menu-content p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.menu-price {
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.add-more {
+    margin-top: 15px;
+    color: #444;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* -------- Order Review Box -------- */
+.order-box {
+    width: 35%;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px #00000022;
+}
+
+.order-box h4 {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+}
+
+.order-box p {
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.total-line {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.pay-btn {
+    width: 100%;
+    background: #b4985f;
+    border: none;
+    padding: 10px;
+    color: white;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* -------- Responsive -------- */
+@media(max-width: 900px) {
+    .rest-box { flex-direction: column; }
+    .rest-box img { width: 100%; height: 200px; }
+    .rest-details { width: 100%; }
+
+    .menu-area { flex-direction: column; }
+    .menu-card, .order-box { width: 100%; margin-bottom: 20px; }
+}
+</style>
+</head>
+
+<body>
+<!-- Top Navigation -->
+<div class="top-nav">
+    <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="reservation.html">Reservation</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="help.html">Help</a></li>
+</ul>
+
+</div>
+
+<!-- Bottom Section -->
+<div class="search-section">
+    
+    <div class="logo-box">
+        <div class="logo"><span>Book</span>mytable</div>
+        <div class="tag">Never wait for your meal</div>
+    </div>
+
+    <div class="search-box">
+        <input type="text" placeholder="Search">
+        <img src="https://cdn-icons-png.flaticon.com/512/954/954591.png" alt="search">
+    </div>
+
+    <!-- Register Button -->
+    <button class="btn" onclick="showProfile()">Register</button>
+
+    <!-- Icons + Profile (Hidden by default) -->
+    <div class="icons-box" id="iconsBox" style="display:none;">
+
+        <!-- Notification -->
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1827/1827370.png">
+
+        <!-- Contact / Message -->
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/542/542689.png" onclick="window.location.href='contact.html'">
+
+        <!-- Heart -->
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/833/833472.png" onclick="window.location.href='whitelist.html'">
+
+        <!-- Profile -->
+        <img src="images/Photo by H Liu.png" class="profile-img">
+
+    </div>
+
+</div>
+
+<!-- ========== PAGE TITLE ========== -->
+<div class="page-title">Our Whitelist</div>
+
+<!-- ========== RESTAURANT WHITELIST BOX ========== -->
+<div class="rest-box">
+    <img src="images/Frame 30680.png">
+
+    <div class="rest-details">
+
+        <!-- RED HEART SVG -->
+        <svg class="heart" onclick="toggleHeart(this)" viewBox="0 0 16 16" fill="#ff0000">
+            <path d="M8 2.748l-.717-.737C5.6.281 2.6 0.878 1.4 3.053c-.9 1.567-.4 3.837 1.1 5.27L8 15l5.5-6.677c1.5-1.433 2-3.703 1.1-5.27C13.4.878 10.4.28 8.717 2.01L8 2.748z"/>
+        </svg>
+
+        <h2>Grant Buffet</h2>
+        <p>Upper Ground Floor, East court, Phoenix Market City,<br>
+           Viman nagar, Chennai..</p>
+
+        <p>North Indian, Mohali, Italian, BBQ</p>
+        <p><b>Cost for two :</b> Rs.1000</p>
+
+        <div class="star-rating">★★★★★</div>
+
+        <div class="add-small"  onclick="window.location.href='reservation.html'">Add more +</div>
+    </div>
+</div>
+
+<!-- ========== SHOW MORE BUTTON ========== -->
+<button class="show-more-btn">Show more</button>
+
+<!-- ========== MENU ITEM WHITELIST TITLE ========== -->
+<div class="menu-title">Menu Item Whitelist</div>
+
+<!-- ========== MENU ITEMS + ORDER REVIEW ========== -->
+<div class="menu-area">
+
+    <!-- LEFT MENU CARD -->
+    <div class="menu-card">
+        <img src="images/unsplash_O-hiJTQDa0I.png">
+
+        <div class="menu-content">
+
+            <!-- MENU HEART -->
+            <svg class="menu-heart" onclick="toggleHeart(this)" viewBox="0 0 16 16" fill="#ff0000">
+                <path d="M8 2.748l-.717-.737C5.6.281 2.6 0.878 1.4 3.053c-.9 1.567-.4 3.837 1.1 5.27L8 15l5.5-6.677c1.5-1.433 2-3.703 1.1-5.27C13.4.878 10.4.28 8.717 2.01L8 2.748z"/>
+            </svg>
+
+            <h3>Panno Catto</h3>
+
+            <p>North Indian, Mohali,<br>Italian, BBQ</p>
+
+            <p class="menu-price">₹ 240</p>
+
+            <div class="add-more" onclick="window.location.href='reservation.html'">Add more +</div>
+        </div>
+    </div>
+
+    <!-- RIGHT ORDER SUMMARY -->
+    <div class="order-box">
+        <h4>Order Review</h4>
+
+        <p>Table Price: Rs: 1000</p>
+        <p>Menu Price: Rs: 240</p>
+
+        <p class="total-line">Total: 1240</p>
+
+        <button class="pay-btn" onclick="window.location.href='table_reservation.html'">Reserve to Pay</button>
+    </div>
+
+</div>
+<!--Footer-->
+<footer class="footer">
+
+    <div class="footer-top">
+
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Customer Reviews</a>
+            <a href="#">Add Your Restaurant</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Policy Info</h4>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Cookies Policy</a>
+            <a href="#">Cancellation Policy</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Cities</h4>
+            <a href="#">Chennai</a>
+            <a href="#">Banglore</a>
+            <a href="#">Hyderabad</a>
+            <a href="#">Mumbai</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Help</h4>
+            <a href="#">Booking Status</a>
+            <a href="#">Add Restaurant</a>
+        </div>
+
+    </div>
+
+    <hr class="footer-line">
+
+    <div class="footer-bottom">
+        <p>Restaurant in Chennai</p>
+        <p>Restaurant in Pune</p>
+
+        <p>Restaurant in Bangalore</p>
+        <p>Restaurant in Kolkata</p>
+
+        <p>Restaurant in Hyderabad</p>
+        <p>Restaurant in Mumbai</p>
+    </div>
+
+</footer>
+<div class="footer-bottom-bar">
+
+    <div class="footer-left">
+        <p>© 2025 Book My Table.Co.in. All rights reserved.</p>
+
+        <div class="social-icons">
+            <a href="#"><img src="images/facebook.png"></a>
+            <a href="#"><img src="images/twitter.png"></a>
+            <a href="#"><img src="images/instagram.png"></a>
+        </div>
+    </div>
+
+    <div class="footer-right">
+
+        <p>
+            <!-- Phone SVG -->
+            <svg class="ico" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.9 
+                19.9 0 0 1-8.63-3.07 19.6 19.6 0 0 
+                1-6-6A19.9 19.9 0 0 1 2.09 4.18 
+                2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 
+                1.72c.12.9.31 1.78.57 2.63a2 2 
+                0 0 1-.45 2.11L8.09 9.91a16 16 
+                0 0 0 6 6l1.45-1.13a2 2 0 0 
+                1 2.11-.45c.85.26 1.73.45 
+                2.63.57A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            (123) 8940–985498
+        </p>
+
+        <p>
+            <!-- Mail SVG -->
+            <svg class="ico" viewBox="0 0 24 24">
+                <rect x="3" y="5" width="18" height="14" rx="2"/>
+                <polyline points="3 5 12 13 21 5"/>
+            </svg>
+            Info@Bookmytable.com
+        </p>
+
+        <p>
+            <!-- Location SVG -->
+            <svg class="ico" viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13S3 
+                17 3 10a9 9 0 1 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Chennai 54375387
+        </p>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+<script>
+function toggleHeart(el) {
+    if (el.getAttribute("fill") === "none") {
+        el.setAttribute("fill", "#ff0000");
+        el.setAttribute("stroke", "none");
+    } else {
+        el.setAttribute("fill", "none");
+        el.setAttribute("stroke", "#ff0000");
+        el.setAttribute("stroke-width", "1.4");
+    }
+}
+</script>
+
+</body>
+</html>

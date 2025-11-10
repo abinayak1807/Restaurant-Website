@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collections Page</title>
+<link rel="stylesheet" href="style.css">
+<style>
+     .footer-bottom-bar {
+    background: #2e2e2e;
+    padding: 25px 40px;
+    color: #fff;
+    font-family: Poppins, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* LEFT */
+.footer-left {
+    text-align: center;
+    width: 100%;
+}
+
+.footer-left p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.social-icons img {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+/* RIGHT BLOCK */
+.footer-right {
+    margin-top: 20px;
+    display: grid;
+    gap: 6px;
+}
+
+.footer-right p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* SVG ICONS */
+.ico {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* RESPONSIVE */
+@media (min-width: 768px) {
+    .footer-left {
+        width: auto;
+        text-align: left;
+    }
+
+    .footer-bottom-bar {
+        align-items: flex-start;
+    }
+}
+ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #333;
+    font-family: Poppins, sans-serif;
+    font-size: 15px;
+}
+
+ul li a:hover {
+    color: #cf1616;
+}
+
+
+    /* ==== BODY FIX ==== */
+    body {
+        margin: 0;
+        font-family: Poppins, sans-serif;
+        background: #f6ecdd;
+    }
+
+    /* ==== BANNER ==== */
+    .collection-banner {
+        width: 100%;
+        height: 220px;
+        background: url('images/unsplash_zS2E12aPO00-1.png') center/cover no-repeat;
+    }
+
+    /* ==== TITLE ==== */
+    .collection-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        padding: 15px 0;
+    }
+
+    /* ==== GRID ==== */
+    .collection-grid {
+        width: 92%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+
+    /* ==== CARD ==== */
+    .collection-card {
+        background: white;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px #00000015;
+        text-align: center;
+    }
+
+    .collection-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
+
+    .collection-card h3 {
+        margin: 8px 0 3px;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .collection-card p {
+        margin: 0 0 10px;
+        font-size: 12px;
+        color: #555;
+    }
+
+    /* ==== RESPONSIVE ==== */
+    @media(max-width: 900px) {
+        .collection-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(max-width: 600px) {
+        .collection-grid { grid-template-columns: 1fr; }
+    }
+/* ================= FOOTER MAIN ================= */
+.footer {
+    background: #f2eadc;
+    padding: 30px 40px;
+    font-family: Poppins, sans-serif;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.footer-col h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.footer-col a {
+    display: block;
+    text-decoration: none;
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 6px;
+}
+
+.footer-col a:hover {
+    color: #cf1616;
+}
+
+.footer-line {
+    margin: 25px 0;
+    border: none;
+    height: 1px;
+    background: #ccc;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    font-size: 14px;
+    color: #444;
+}
+
+/* ================= BOTTOM DARK BAR ================= */
+.footer-bottom-bar {
+    background: #2e2e2e;
+    color: white;
+    padding: 25px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Left */
+.footer-left {
+    max-width: 50%;
+}
+
+.footer-left p {
+    margin: 0 0 10px;
+    font-size: 14px;
+}
+
+/* Social icons */
+.social-icons {
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons img {
+    width: 26px;
+    cursor: pointer;
+}
+
+/* Right */
+.footer-right {
+    text-align: right;
+}
+
+.footer-right p {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+/* Icon size */
+.ico {
+    width: 16px;
+    height: 16px;
+    stroke: #fff;
+    stroke-width: 2;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .footer-top {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom-bar {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-right {
+        text-align: center;
+    }
+
+    .footer-left {
+        max-width: 100%;
+        text-align: center;
+    }
+}
+
+</style>
+
+</head>
+<body>
+<!-- Top Navigation -->
+<div class="top-nav">
+    <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="reservation.html">Reservation</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="help.html">Help</a></li>
+</ul>
+
+</div>
+
+<!-- Bottom Section -->
+<div class="search-section">
+    
+    <div class="logo-box">
+        <div class="logo"><span>Book</span>mytable</div>
+        <div class="tag">Never wait for your meal</div>
+    </div>
+
+    <div class="search-box">
+        <input type="text" placeholder="Search">
+        <img src="https://cdn-icons-png.flaticon.com/512/954/954591.png" alt="search">
+    </div>
+
+    <!-- Register Button -->
+    <button class="btn" onclick="showProfile()">Register</button>
+
+    <!-- Icons + Profile (Hidden by default) -->
+    <div class="icons-box" id="iconsBox" style="display:none;">
+
+        <!-- Notification -->
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1827/1827370.png">
+
+        <!-- Contact / Message -->
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/542/542689.png" onclick="window.location.href='contact.html'">
+
+        <!-- Heart -->
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/833/833472.png" onclick="window.location.href='whitelist.html'">
+
+        <!-- Profile -->
+        <img src="images/Photo by H Liu.png" class="profile-img">
+
+    </div>
+
+</div>
+
+
+<!-- ================= BANNER ================= -->
+<div class="collection-banner"></div>
+
+<!-- ================= TITLE ================= -->
+<h2 class="collection-title">
+    Explore restaurants by famous collections in Chennai
+</h2>
+
+<!-- ================= GRID ================= -->
+<div class="collection-grid">
+
+    <div class="collection-card">
+        <img src="images/unsplash_8TH0fB63XWg.png">
+        <h3>Perfect–Buffet</h3>
+        <p>7 Restaurant found</p>
+    </div>
+
+    <div class="collection-card">
+        <img src="images/unsplash_AGdxYn7e-5Q.png">
+        <h3>Barbeque</h3>
+        <p>6 Restaurant found</p>
+    </div>
+
+    <div class="collection-card">
+        <img src="images/unsplash_NvxVZ3xMc2M-1.png">
+        <h3>Chinese</h3>
+        <p>5 Restaurant found</p>
+    </div>
+
+    <div class="collection-card">
+        <img src="images/unsplash_zS2E12aPO00-1.png">
+        <h3>Dinning–Resi</h3>
+        <p>7 Restaurant found</p>
+    </div>
+
+    <div class="collection-card">
+        <img src="images/unsplash_rgzoI430PBs.png">
+        <h3>Romantic</h3>
+        <p>6 Restaurant found</p>
+    </div>
+
+    <div class="collection-card">
+        <img src="images/unsplash_NvxVZ3xMc2M.png">
+        <h3>Luxury</h3>
+        <p>5 Restaurant found</p>
+    </div>
+
+    <div class="collection-card">
+        <img src="images/unsplash_8TH0fB63XWg.png">
+        <h3>Perfect–Buffet</h3>
+        <p>7 Restaurant found</p>
+    </div>
+
+    <div class="collection-card">
+        <img src="images/unsplash_AGdxYn7e-5Q.png">
+        <h3>Barbeque</h3>
+        <p>6 Restaurant found</p>
+    </div>
+
+    <div class="collection-card">
+        <img src="images/unsplash_NvxVZ3xMc2M-1.png">
+        <h3>Chinese</h3>
+        <p>5 Restaurant found</p>
+    </div>
+
+    <div class="collection-card">
+        <img src="images/unsplash_zS2E12aPO00-1.png">
+        <h3>Dinning–Resi</h3>
+        <p>7 Restaurant found</p>
+    </div>
+
+    <div class="collection-card">
+        <img src="images/unsplash_rgzoI430PBs.png">
+        <h3>Romantic</h3>
+        <p>6 Restaurant found</p>
+    </div>
+
+    <div class="collection-card">
+        <img src="images/unsplash_NvxVZ3xMc2M.png">
+        <h3>Luxury</h3>
+        <p>5 Restaurant found</p>
+    </div>
+</div> 
+
+
+<!--Footer-->
+<footer class="footer">
+
+    <div class="footer-top">
+
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Customer Reviews</a>
+            <a href="#">Add Your Restaurant</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Policy Info</h4>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Cookies Policy</a>
+            <a href="#">Cancellation Policy</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Cities</h4>
+            <a href="#">Chennai</a>
+            <a href="#">Banglore</a>
+            <a href="#">Hyderabad</a>
+            <a href="#">Mumbai</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Help</h4>
+            <a href="#">Booking Status</a>
+            <a href="#">Add Restaurant</a>
+        </div>
+
+    </div>
+
+    <hr class="footer-line">
+
+    <div class="footer-bottom">
+        <p>Restaurant in Chennai</p>
+        <p>Restaurant in Pune</p>
+
+        <p>Restaurant in Bangalore</p>
+        <p>Restaurant in Kolkata</p>
+
+        <p>Restaurant in Hyderabad</p>
+        <p>Restaurant in Mumbai</p>
+    </div>
+
+</footer>
+<div class="footer-bottom-bar">
+
+    <div class="footer-left">
+        <p>© 2025 Book My Table.Co.in. All rights reserved.</p>
+
+        <div class="social-icons">
+            <a href="#"><img src="images/facebook.png"></a>
+            <a href="#"><img src="images/twitter.png"></a>
+            <a href="#"><img src="images/instagram.png"></a>
+        </div>
+    </div>
+
+    <div class="footer-right">
+
+        <p>
+            <!-- Phone SVG -->
+            <svg class="ico" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.9 
+                19.9 0 0 1-8.63-3.07 19.6 19.6 0 0 
+                1-6-6A19.9 19.9 0 0 1 2.09 4.18 
+                2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 
+                1.72c.12.9.31 1.78.57 2.63a2 2 
+                0 0 1-.45 2.11L8.09 9.91a16 16 
+                0 0 0 6 6l1.45-1.13a2 2 0 0 
+                1 2.11-.45c.85.26 1.73.45 
+                2.63.57A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            (123) 8940–985498
+        </p>
+
+        <p>
+            <!-- Mail SVG -->
+            <svg class="ico" viewBox="0 0 24 24">
+                <rect x="3" y="5" width="18" height="14" rx="2"/>
+                <polyline points="3 5 12 13 21 5"/>
+            </svg>
+            Info@Bookmytable.com
+        </p>
+
+        <p>
+            <!-- Location SVG -->
+            <svg class="ico" viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13S3 
+                17 3 10a9 9 0 1 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Chennai 54375387
+        </p>
+
+    </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
